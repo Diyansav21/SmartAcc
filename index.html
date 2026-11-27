@@ -163,8 +163,8 @@ select{width:100%;background:#0c0c0e;border:1px solid var(--bd);border-radius:2p
 
 <script>
 /* ============ НАСТРОЙКИ ============ */
-// Web3Forms: сложи ключа си тук (виж инструкцията). Докато не е сменен, поръчката пак завършва успешно, но не се изпраща имейл.
-const WEB3FORMS_ACCESS_KEY = "653dac4a-d1fa-45fe-941b-1b14edad7ad8";
+// Formspree: след регистрация и създаване на форма получаваш адрес от типа https://formspree.io/f/abcdwxyz. Постави го тук вместо стария.
+const FORM_ENDPOINT = "https://formspree.io/f/maeozwob";
 const SHIP = 4.70;                         // ориентировъчна доставка
 const PROMOS = { IVA5: 0.05, SMART10: 0.10 }; // промо кодове (главни/малки не се различават)
 
@@ -195,26 +195,37 @@ const PRODUCTS = [
      Ако файлът не съществува, картата не се показва. Нов отзив за 10 секунди: копирай ред, смени image/name.
    Показват се в реда, в който са тук. */
 const CUSTOMER_REVIEWS = [
-
-// ---- 4 СЛОТА САМО ТЕКСТ (попълни text, за да се покажат) ----
- {type:"text",name:"Милена С.",city:"Велико Търново",product:"AirPods Pro 2",rating:5,date:"15.11.2026",text:"Прекрасно качество и звук,за цената си това са най добрите слушалки на пазара. Силно препоръчвам!"},
- {type:"text",name:"Иванина Н.",city:"Стара Загора",product:"AirPods Pro 3",rating:5,date:"15.11.2026",text:"Изключително любезни и учтиви хора. Слушалките са страхотни и работят изключително перфектно препоръчвам с две ръце‼️❤️"},
- {type:"text",name:"Никола М.",city:"София",product:"AirPods Pro 2",rating:5,date:"14.11.2026",text:"Много добро отношение и коректност! Бърза комуникация, всичко беше точно и останах доволен. Препоръчвам!"},
  // ---- ТЕКСТОВИ (примерни, замени ги с твои реални отзиви) ----
- {type:"text",name:"Георги М.",city:"София",product:"AirPods Pro 2",rating:5,date:"12.10.2026",text:"Отворих пратката пред куриера, всичко беше запечатано. Звукът е супер за тази цена."},
- {type:"text",name:"Виктория Т.",city:"Пловдив",product:"AirPods Pro 3",rating:5,date:"03.11.2026",text:"Режимът „Прозрачност“ е точно каквото ми трябваше за градския транспорт. Препоръчвам!"},
+ {type:"text",name:"Георги М.",city:"София",product:"Слушалки Pro 2",rating:5,date:"12.10.2026",text:"Отворих пратката пред куриера, всичко беше запечатано. Звукът е супер за тази цена."},
+ {type:"text",name:"Виктория Т.",city:"Пловдив",product:"Слушалки Pro 3",rating:5,date:"03.11.2026",text:"Режимът „Прозрачност“ е точно каквото ми трябваше за градския транспорт. Препоръчвам!"},
  {type:"text",name:"Николай Д.",city:"Варна",product:"Смарт часовник Ultra 2",rating:5,date:"28.10.2026",text:"За тази цена не очаквах такъв дисплей. Пристигна на следващия ден."},
  {type:"text",name:"Мария К.",city:"Бургас",product:"Батерии и Зарядни",rating:5,date:"19.10.2026",text:"Магнитната батерия е много удобна, залепя се и зарежда без кабели."},
- {type:"text",name:"Стефан И.",city:"Русе",product:"AirPods Pro 2",rating:4,date:"07.11.2026",text:"Много добро съотношение цена/качество. Свързаха се веднага с телефона ми."},
+ {type:"text",name:"Стефан И.",city:"Русе",product:"Слушалки Pro 2",rating:4,date:"07.11.2026",text:"Много добро съотношение цена/качество. Свързаха се веднага с телефона ми."},
  {type:"text",name:"Елица Р.",city:"Стара Загора",product:"Смарт часовник Ultra 2",rating:5,date:"15.11.2026",text:"Купих го за подарък и получателят е във възторг. Поръчката мина без никакви проблеми."},
-  {type:"text",name:"Емилия Я.",city:"София",product:"AirPods Pro 3",rating:5,date:"14.11.2026",text:"Много съм доволна от слушалките. Препоръчвам!"},
+ // ---- 4 СЛОТА САМО ТЕКСТ (попълни text, за да се покажат) ----
+ {type:"text",name:"",city:"",product:"Слушалки Pro 2",rating:5,date:"",text:""},
+ {type:"text",name:"",city:"",product:"Слушалки Pro 3",rating:5,date:"",text:""},
+ {type:"text",name:"",city:"",product:"Смарт часовник Ultra 2",rating:5,date:"",text:""},
+ {type:"text",name:"",city:"",product:"Батерии и Зарядни",rating:5,date:"",text:""},
  // ---- 4 СЛОТА САМО СНИМКА (появяват се, когато сложиш файла в images/) ----
- {type:"photo",name:"",city:"",product:"AirPods Pro 3",rating:5,date:"",image:"images/client-1.jpg"},
- {type:"photo",name:"",city:"",product:"AirPods Pro 3",rating:4,date:"",image:"images/client-2.jpg"},
- {type:"photo",name:"",city:"",product:"AirPods Pro 2",rating:4,date:"",image:"images/client-3.jpg"},
- {type:"photo",name:"",city:"",product:"AirPods Pro 2",rating:5,date:"",image:"images/client-4.jpg"}
+ {type:"photo",name:"Доволен клиент",city:"",product:"Слушалки Pro 2",rating:5,date:"",image:"images/client1.jpg"},
+ {type:"photo",name:"Доволен клиент",city:"",product:"Слушалки Pro 3",rating:5,date:"",image:"images/client2.jpg"},
+ {type:"photo",name:"Доволен клиент",city:"",product:"Смарт часовник Ultra 2",rating:5,date:"",image:"images/client3.jpg"},
+ {type:"photo",name:"Доволен клиент",city:"",product:"Батерии и Зарядни",rating:5,date:"",image:"images/client4.jpg"}
 ];
 
+/* Изпращане през Formspree: връща {ok:true} или {ok:false,msg}; грешката се вижда и в конзолата (F12) */
+const w3on=()=>FORM_ENDPOINT&&!FORM_ENDPOINT.includes("YOUR_FORM_ID");
+async function w3(fields){
+ const {subject,...rest}=fields;
+ const em=[fields["Имейл"],fields["Контакт"]].find(x=>x&&/^\S+@\S+\.\S+$/.test(x));
+ try{
+  const r=await fetch(FORM_ENDPOINT.trim(),{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({_subject:subject,...(em?{email:em}:{}),...rest})});
+  const d=await r.json().catch(()=>({}));
+  if(r.ok)return{ok:true};
+  console.error("Formspree отказ:",r.status,d);return{ok:false,msg:(d.errors&&d.errors.map(e=>e.message).join(", "))||d.error||("код "+r.status)};
+ }catch(e){console.error("Formspree мрежова грешка:",e);return{ok:false,msg:"няма връзка със сървъра"}}
+}
 /* ============ ПОМОЩНИ ============ */
 const I=n=>`<svg class="i"><use href="#s-${n}"/></svg>`;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -378,13 +389,11 @@ async function submitOrder(){
  const co=document.querySelector("[name=co]:checked").value,ty=document.querySelector("[name=ty]:checked").value;
  const addr=`${v("cg")}, ${v("ca")}`;
  lastOrder={no,items,addr,total:t.total};
- // Изпращане през Web3Forms (ако ключът е сменен)
- if(WEB3FORMS_ACCESS_KEY&&WEB3FORMS_ACCESS_KEY!=="653dac4a-d1fa-45fe-941b-1b14edad7ad8"){
-  try{await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({
-   access_key:WEB3FORMS_ACCESS_KEY,subject:`Нова поръчка ${no} – Smart Accessories`,from_name:"Smart Accessories",
-   "Номер на поръчка":no,"Клиент":v("cn"),"Телефон":v("cp"),"Имейл":v("ce")||"-","Куриер":co,"Тип доставка":ty,"Адрес / офис":addr,
-   "Продукти":items,"Промо код":promo||"-","Бележка":v("cb")||"-","Сума продукти":money(t.sub),"Отстъпка":money(t.disc),"Доставка":money(t.ship),"Обща сума":money(t.total),"Плащане":"Наложен платеж с ПРЕГЛЕД"})})}catch(e){}
- }
+ // Изпращане през Web3Forms (ако ключът е сменен). При грешка поръчката НЕ се показва като приета.
+ if(w3on()){
+  const res=await w3({subject:`Нова поръчка ${no} – Smart Accessories`,"Номер на поръчка":no,"Клиент":v("cn"),"Телефон":v("cp"),"Имейл":v("ce")||"-","Куриер":co,"Тип доставка":ty,"Адрес / офис":addr,"Продукти":items,"Промо код":promo||"-","Бележка":v("cb")||"-","Сума продукти":money(t.sub),"Отстъпка":money(t.disc),"Доставка":money(t.ship),"Обща сума":money(t.total),"Плащане":"Наложен платеж с ПРЕГЛЕД"});
+  if(!res.ok){er.textContent="Поръчката не можа да бъде изпратена ("+res.msg+"). Опитай отново или се обади на 0886 758 379.";$("#sub").disabled=false;$("#sub").textContent="Завърши поръчката";return}
+ }else console.warn("Formspree адресът не е сложен – имейл не се изпраща.");
  if(user){const o=LS("orders")||{};(o[user.email]=o[user.email]||[]).unshift({no,date:new Date().toLocaleDateString("bg-BG"),items,promo,total:t.total});LS("orders",o)}
  cart={};promo="";save();badges();renderCart();
  modal(`<div style="text-align:center"><div style="font-size:3rem;color:var(--gr)"><svg class="i "><use href="#s-check"/></svg></div><h2>Поръчката ви е приета!</h2><p class="gn"><b>${no}</b></p><br>
@@ -419,8 +428,9 @@ async function sendQ(){
  if(v("qc").length<5)return e.textContent="Въведи телефон или имейл, на който да ти отговорим.";
  if(v("qt").length<5)return e.textContent="Напиши въпроса си.";
  $("#qb").disabled=true;$("#qb").textContent="Изпращане…";
- if(WEB3FORMS_ACCESS_KEY&&WEB3FORMS_ACCESS_KEY!=="653dac4a-d1fa-45fe-941b-1b14edad7ad8"){
-  try{await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:WEB3FORMS_ACCESS_KEY,subject:"Нов въпрос от сайта – Smart Accessories",from_name:"Smart Accessories","Име":v("qn"),"Контакт":v("qc"),"Продукт":v("qp")||"-","Въпрос":v("qt")})})}catch(x){}
+ if(w3on()){
+  const res=await w3({subject:"Нов въпрос от сайта – Smart Accessories","Име":v("qn"),"Контакт":v("qc"),"Продукт":v("qp")||"-","Въпрос":v("qt")});
+  if(!res.ok){e.textContent="Въпросът не можа да бъде изпратен ("+res.msg+"). Опитай отново или се обади на 0886 758 379.";$("#qb").disabled=false;$("#qb").textContent="Изпрати въпроса";return}
  }
  modal(`<div style="text-align:center"><div style="font-size:3rem;color:var(--gr)">${I("check")}</div><h2>Благодарим ти!</h2><p class="mu" style="margin:8px 0 18px">Получихме въпроса ти и ще ти отговорим възможно най-скоро.</p><a class="btn o" href="tel:0886758379">Обади се: 0886 758 379</a></div>`,1);
 }
