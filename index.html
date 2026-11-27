@@ -215,7 +215,7 @@ const CUSTOMER_REVIEWS = [
 ];
 
 /* Изпращане през Formspree: връща {ok:true} или {ok:false,msg}; грешката се вижда и в конзолата (F12) */
-const w3on=()=>FORM_ENDPOINT&&!FORM_ENDPOINT.includes("YOUR_FORM_ID");
+const w3on=()=>FORM_ENDPOINT&&!FORM_ENDPOINT.includes("https://formspree.io/f/maeozwob");
 async function w3(fields){
  const {subject,...rest}=fields;
  const em=[fields["Имейл"],fields["Контакт"]].find(x=>x&&/^\S+@\S+\.\S+$/.test(x));
