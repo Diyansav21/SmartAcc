@@ -379,7 +379,7 @@ async function submitOrder(){
  const addr=`${v("cg")}, ${v("ca")}`;
  lastOrder={no,items,addr,total:t.total};
  // Изпращане през Web3Forms (ако ключът е сменен)
- if(WEB3FORMS_ACCESS_KEY&&WEB3FORMS_ACCESS_KEY!=="YOUR_ACCESS_KEY_HERE"){
+ if(WEB3FORMS_ACCESS_KEY&&WEB3FORMS_ACCESS_KEY!=="653dac4a-d1fa-45fe-941b-1b14edad7ad8"){
   try{await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({
    access_key:WEB3FORMS_ACCESS_KEY,subject:`Нова поръчка ${no} – Smart Accessories`,from_name:"Smart Accessories",
    "Номер на поръчка":no,"Клиент":v("cn"),"Телефон":v("cp"),"Имейл":v("ce")||"-","Куриер":co,"Тип доставка":ty,"Адрес / офис":addr,
@@ -419,7 +419,7 @@ async function sendQ(){
  if(v("qc").length<5)return e.textContent="Въведи телефон или имейл, на който да ти отговорим.";
  if(v("qt").length<5)return e.textContent="Напиши въпроса си.";
  $("#qb").disabled=true;$("#qb").textContent="Изпращане…";
- if(WEB3FORMS_ACCESS_KEY&&WEB3FORMS_ACCESS_KEY!=="YOUR_ACCESS_KEY_HERE"){
+ if(WEB3FORMS_ACCESS_KEY&&WEB3FORMS_ACCESS_KEY!=="653dac4a-d1fa-45fe-941b-1b14edad7ad8"){
   try{await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:WEB3FORMS_ACCESS_KEY,subject:"Нов въпрос от сайта – Smart Accessories",from_name:"Smart Accessories","Име":v("qn"),"Контакт":v("qc"),"Продукт":v("qp")||"-","Въпрос":v("qt")})})}catch(x){}
  }
  modal(`<div style="text-align:center"><div style="font-size:3rem;color:var(--gr)">${I("check")}</div><h2>Благодарим ти!</h2><p class="mu" style="margin:8px 0 18px">Получихме въпроса ти и ще ти отговорим възможно най-скоро.</p><a class="btn o" href="tel:0886758379">Обади се: 0886 758 379</a></div>`,1);
